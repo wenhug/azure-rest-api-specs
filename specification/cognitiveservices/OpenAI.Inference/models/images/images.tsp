@@ -92,6 +92,7 @@ model ImageGenerations {
 // @lroStatus
 @doc("A polling status update or final response payload for an image operation.")
 @added(ServiceApiVersions.v2023_06_01_Preview)
+@removed(ServiceApiVersions.v2023_12_01_Preview)
 model BatchImageGenerationOperationResponse {
   @doc("The ID of the operation.")
   id: string;
