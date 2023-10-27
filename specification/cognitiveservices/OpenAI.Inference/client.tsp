@@ -12,3 +12,6 @@ using Azure.ClientGenerator.Core;
 // shared Chat Completions route, with the selection gated by the presence or non-presence of additional child
 // configuration options on the request payload options model.
 @@internal(Azure.OpenAI.getChatCompletionsWithAzureExtensions);
+
+// Remap "model" nomenclature to "DeploymentName" in appropriate containers; comments should clarify the dual use
+@@projectedName(Azure.OpenAI.ImageGenerationOptions.`model`, "csharp", "DeploymentName");
