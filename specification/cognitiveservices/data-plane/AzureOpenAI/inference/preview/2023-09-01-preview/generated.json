@@ -1856,7 +1856,7 @@
         },
         "response_format": {
           "$ref": "#/definitions/ImageGenerationResponseFormat",
-          "description": "  The format in which image generation response items should be presented.\n  Azure OpenAI only supports URL response items.",
+          "description": "The format in which image generation response items should be presented.",
           "x-ms-client-name": "responseFormat"
         },
         "user": {
@@ -1920,8 +1920,7 @@
       "description": "The desired size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.",
       "enum": [
         "256x256",
-        "512x512",
-        "1024x1024"
+        "512x512"
       ],
       "x-ms-enum": {
         "name": "ImageSize",
@@ -1936,11 +1935,6 @@
             "name": "Size512x512",
             "value": "512x512",
             "description": "Image size of 512x512."
-          },
-          {
-            "name": "Size1024x1024",
-            "value": "1024x1024",
-            "description": "Image size of 1024x1024."
           }
         ]
       }

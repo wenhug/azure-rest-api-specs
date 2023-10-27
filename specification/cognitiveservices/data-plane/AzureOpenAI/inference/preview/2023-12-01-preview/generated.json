@@ -1733,8 +1733,16 @@
         },
         "response_format": {
           "$ref": "#/definitions/ImageGenerationResponseFormat",
-          "description": "  The format in which image generation response items should be presented.\n  Azure OpenAI only supports URL response items.",
+          "description": "The format in which image generation response items should be presented.",
           "x-ms-client-name": "responseFormat"
+        },
+        "quality": {
+          "$ref": "#/definitions/ImageGenerationQuality",
+          "description": "The desired image generation quality level to use."
+        },
+        "style": {
+          "$ref": "#/definitions/ImageGenerationStyle",
+          "description": "The desired image generation style to use."
         },
         "user": {
           "type": "string",
@@ -1744,6 +1752,30 @@
       "required": [
         "prompt"
       ]
+    },
+    "ImageGenerationQuality": {
+      "type": "string",
+      "description": "The requested quality level of a generated image.",
+      "enum": [
+        "low",
+        "high"
+      ],
+      "x-ms-enum": {
+        "name": "ImageGenerationQuality",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "low",
+            "value": "low",
+            "description": "Requests image generation with a low quality level."
+          },
+          {
+            "name": "high",
+            "value": "high",
+            "description": "Requests image generation with a high quality level."
+          }
+        ]
+      }
     },
     "ImageGenerationResponseFormat": {
       "type": "string",
@@ -1769,6 +1801,36 @@
         ]
       }
     },
+    "ImageGenerationStyle": {
+      "type": "string",
+      "description": "The requested style of a generated image.",
+      "enum": [
+        "natural",
+        "vivid",
+        "dramatic"
+      ],
+      "x-ms-enum": {
+        "name": "ImageGenerationStyle",
+        "modelAsString": true,
+        "values": [
+          {
+            "name": "natural",
+            "value": "natural",
+            "description": "Requests image generation in a natural style."
+          },
+          {
+            "name": "vivid",
+            "value": "vivid",
+            "description": "Requests image generation in a vivid style."
+          },
+          {
+            "name": "dramatic",
+            "value": "dramatic",
+            "description": "Requests image generation in a dramatic style."
+          }
+        ]
+      }
+    },
     "ImageGenerations": {
       "type": "object",
       "description": "The result of the operation if the operation succeeded.",
@@ -1785,6 +1847,11 @@
             "$ref": "#/definitions/ImageGenerationData"
           },
           "x-ms-identifiers": []
+        },
+        "revised_prompt": {
+          "type": "string",
+          "description": "The post-processed prompt ultimately employed by image generation.",
+          "x-ms-client-name": "revisedPrompt"
         }
       },
       "required": [
@@ -1796,28 +1863,28 @@
       "type": "string",
       "description": "The desired size of the generated images. Must be one of 256x256, 512x512, or 1024x1024.",
       "enum": [
-        "256x256",
-        "512x512",
-        "1024x1024"
+        "1024x1024",
+        "1792x1024",
+        "1024x1792"
       ],
       "x-ms-enum": {
         "name": "ImageSize",
         "modelAsString": true,
         "values": [
           {
-            "name": "Size256x256",
-            "value": "256x256",
-            "description": "Image size of 256x256."
-          },
-          {
-            "name": "Size512x512",
-            "value": "512x512",
-            "description": "Image size of 512x512."
-          },
-          {
             "name": "Size1024x1024",
             "value": "1024x1024",
-            "description": "Image size of 1024x1024."
+            "description": "Square image size of 1024x1024."
+          },
+          {
+            "name": "Size1792x1024",
+            "value": "1792x1024",
+            "description": "Tall image size of 1792x1024."
+          },
+          {
+            "name": "Size1024x1792",
+            "value": "1024x1792",
+            "description": "Wide image size of 1024x1792."
           }
         ]
       }
